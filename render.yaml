@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: event-planning-backend
+    runtime: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: node src/server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      - key: MONGODB_URI
+        sync: false  # Will be set in Render dashboard
+      - key: JWT_SECRET
+        generateValue: true  # Render will generate a secure random value
+      - key: ADMIN_USERNAME
+        value: admin
+      - key: ADMIN_PASSWORD
+        sync: false  # Set securely in dashboard
+      - key: SUPER_ADMIN_USERNAME
+        value: superadmin
+      - key: SUPER_ADMIN_PASSWORD
+        sync: false  # Set securely in dashboard
